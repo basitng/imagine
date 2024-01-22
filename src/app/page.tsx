@@ -1,15 +1,17 @@
+"use client";
 import Form from "@/components/form";
 import PhotoBooth from "@/components/photo-booth";
 import React from "react";
 
 export default function Page() {
+  const [image, setImage] = React.useState("");
   return (
     <div className="justify-center flex items-center flex-col max-w-2xl px-2.5 xl:px-0">
       <h1 className="text-6xl font-display text-transparent bg-gradient-to-br from-black to-stone-500 bg-clip-text font-bold tracking-[-0.02em] ">
-        Generate AI Art
+        Just - Imagine
       </h1>
       <p className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl">
-        Generate beautiful AI spiral art with one click. Powered by{" "}
+        Generate beautiful AI art with one click. Powered by{" "}
         <a
           className="text-black underline-offset-4 hover:underline"
           href="https://vercel.com"
@@ -29,9 +31,10 @@ export default function Page() {
         </a>
         .
       </p>
-      <Form />
+      <Form setImage={setImage} />
       <PhotoBooth
         image={
+          image ||
           "https://replicate.delivery/pbxt/Iwojf52KreuubUk1IjkyBfCB63c14BVvE9w2Xx2d2Gp5Ue7IB/out-0.png"
         }
       />
