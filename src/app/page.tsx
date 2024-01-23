@@ -14,7 +14,7 @@ export default function Page() {
         Generate beautiful AI art with one click. Powered by{" "}
         <a
           className="text-black underline-offset-4 hover:underline"
-          href="https://vercel.com"
+          href="https://unrealspeech.com"
           target="_blank"
           rel="noopener noreferrer"
         >
