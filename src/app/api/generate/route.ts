@@ -1,3 +1,4 @@
+import { nanoid } from "@/lib/utils";
 import { kv } from "@vercel/kv";
 import { NextResponse } from "next/server";
 import Replicate from "replicate";
@@ -13,7 +14,7 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as bodyProps;
     const prompt = body.prompt;
-    const output = await replicate.run(
+    const output: any = await replicate.run(
       "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b",
       {
         input: {
@@ -33,9 +34,18 @@ export async function POST(request: Request) {
         },
       }
     );
-    console.log(output);
+
+    const id = nanoid();
+    await kv.hset(id, { image: output[0] });
+
     return NextResponse.json(output);
   } catch (error) {
     return NextResponse.json(error);
   }
+}
+
+export async function GET(request: Request) {
+  const count = await kv.dbsize();
+
+  return NextResponse.json(count);
 }

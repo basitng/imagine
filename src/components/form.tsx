@@ -11,9 +11,10 @@ import promptmaker from "promptmaker";
 
 interface FormProps {
   setImage: React.Dispatch<React.SetStateAction<string>>;
+  setGenerating: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Form({ setImage }: FormProps) {
+export default function Form({ setImage, setGenerating }: FormProps) {
   const [placeholder, setPlaceholder] = useState("");
   const [prompt, setPrompt] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -22,6 +23,7 @@ export default function Form({ setImage }: FormProps) {
 
   const handleGeneration = async () => {
     setLoading(true);
+    setGenerating(true);
     axios
       .post("/api/generate", { prompt })
       .then((res) => {
@@ -29,7 +31,10 @@ export default function Form({ setImage }: FormProps) {
         toast.success("Image generated successfully");
       })
       .catch((err) => toast.error("Unable to generate image"))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setGenerating(false);
+      });
   };
   useEffect(() => {
     textareaRef.current?.focus();

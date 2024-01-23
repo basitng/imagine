@@ -17,12 +17,15 @@ function forceDownload(blobUrl: string, filename: string) {
   a.remove();
 }
 
-export default function PhotoBooth({ image }: { image: string | null }) {
-  const router = useRouter();
+export default function PhotoBooth({
+  image,
+  loading,
+}: {
+  image: string | null;
+  loading: boolean;
+}) {
   const params = useParams();
-  const { id } = params;
   const [copying, setCopying] = useState(false);
-  const [downloading, setDownloading] = useState(false);
 
   const handleCopy = () => {
     setCopying(true);
@@ -31,6 +34,7 @@ export default function PhotoBooth({ image }: { image: string | null }) {
       toast.success("Copied to clipboard!");
     });
   };
+
   return (
     <div className="relative mx-auto mt-6  w-full max-w-xl overflow-hidden rounded-2xl border border-gray-200">
       {image && (
@@ -47,28 +51,22 @@ export default function PhotoBooth({ image }: { image: string | null }) {
           </div>
         </div>
       )}
-      {image ? (
+      {!loading ? (
         <Image
           alt="output image"
-          src={image}
+          src={image || ""}
           width={1280}
           height={1280}
           className="h-full object-cover"
           unoptimized
         />
       ) : (
-        <div className="z-10 flex h-full w-full flex-col items-center bg-white pt-[140px] sm:pt-[280px]">
+        <div className="z-10 flex h-[55vh] w-full flex-col items-center bg-white justify-center">
           <LoadingCircle />
-          {id && (
-            <div
-              className="my-4 flex animate-fade-up flex-col items-center space-y-4 opacity-0"
-              style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}
-            >
-              <p className="text-sm text-gray-500">
-                This can take anywhere between 20s-30s to run.
-              </p>
-            </div>
-          )}
+
+          <p className="text-sm py-2 text-gray-500">
+            This process takes take 20-30 seconds to complete.
+          </p>
         </div>
       )}
     </div>
