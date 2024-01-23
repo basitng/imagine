@@ -49,7 +49,7 @@ export default function Form({ setImage }: FormProps) {
       <Textarea
         disabled={!user}
         // ref={textareaRef}
-        className="min-h-[45px] text-base focus-visible:ring-0 focus-visible:ring-offset-0 focus:right-0 border-none focus:outline-none"
+        className="md:min-h-[45px] min-h-[60px] text-base focus-visible:ring-0 focus-visible:ring-offset-0 focus:right-0 border-none focus:outline-none"
         placeholder={placeholder}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
           setPrompt(e.target.value);

@@ -7,7 +7,7 @@ export default function Page() {
   const [image, setImage] = React.useState("");
   return (
     <div className="justify-center flex items-center flex-col max-w-2xl px-2.5 xl:px-0">
-      <h1 className="text-6xl font-display text-transparent bg-gradient-to-br from-black to-stone-500 bg-clip-text font-bold tracking-[-0.02em] ">
+      <h1 className="md:text-6xl text-3xl font-display text-transparent bg-gradient-to-br from-black to-stone-500 bg-clip-text font-bold tracking-[-0.02em] ">
         Just - Imagine
       </h1>
       <p className="mt-6 text-center text-gray-500 [text-wrap:balance] md:text-xl">
