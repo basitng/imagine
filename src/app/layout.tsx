@@ -5,7 +5,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { BuyMeACoffee } from "@/components/icons";
+import { BuyMeACoffee, Twitter } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   ClerkProvider,
@@ -39,7 +39,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={cn(clash.variable, inter.variable, "relative")}>
-          <div className="bg-gradient-to-br min-h-screen w-full from-indigo-100 via-orange-100 to-blue-100">
+          <div className="bg-gradient-to-br min-h-screen w-full from-indigo-100 via-orange-50 to-blue-100">
             <Toaster />
             <div className="w-full px-3 md:px-0 top-0 z-50 fixed transition-all bg-white/0">
               <div className="h-16 max-w-screen-xl xl:mx-auto flex items-center justify-between">
@@ -85,6 +85,17 @@ export default async function RootLayout({
               </div>
             </div>
             <div className="flex min-h-screen w-full flex-col items-center justify-center py-32">
+              <a
+                href="https://x.com/ajaga_abdbasit/status/1749806783160533204?s=20"
+                target="_blank"
+                rel="noreferrer"
+                className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
+              >
+                <Twitter className="h-5 w-5 text-[#1d9bf0]" />
+                <p className="text-sm font-semibold text-[#1d9bf0]">
+                  Introducing Imagine
+                </p>
+              </a>
               {children}
               <Analytics />
             </div>
