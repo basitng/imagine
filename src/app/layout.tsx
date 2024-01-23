@@ -13,6 +13,7 @@ import {
   SignOutButton,
   currentUser,
 } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react";
 const clash = localFont({
   src: "./ClashDisplay-Semibold.otf",
   variable: "--font-clash",
@@ -36,6 +37,7 @@ export default async function RootLayout({
 
   return (
     <ClerkProvider>
+      <Analytics />
       <html lang="en">
         <body className={cn(clash.variable, inter.variable, "relative")}>
           <div className="bg-gradient-to-br min-h-screen w-full from-indigo-100 via-orange-100 to-blue-100">
