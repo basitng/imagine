@@ -37,7 +37,6 @@ export default async function RootLayout({
 
   return (
     <ClerkProvider>
-      <Analytics />
       <html lang="en">
         <body className={cn(clash.variable, inter.variable, "relative")}>
           <div className="bg-gradient-to-br min-h-screen w-full from-indigo-100 via-orange-100 to-blue-100">
@@ -87,6 +86,7 @@ export default async function RootLayout({
             </div>
             <div className="flex min-h-screen w-full flex-col items-center justify-center py-32">
               {children}
+              <Analytics />
             </div>
             {/* <Footer /> */}
           </div>
